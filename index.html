@@ -3,61 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PeaceWala - Dil Ki Baat</title>
-<meta name="description" content="PeaceWala - AI Dost jo teri mother tongue me sunta hai. 130+ Bhasha, 100% Private, Voice + Chat.">
+<title>PeaceWala — Dil Ki Baat, Bina Darr Ke | 130+ Languages</title>
+<meta name="description" content="PeaceWala - AI Dost jo teri mother tongue me sunta hai. 130+ Bhasha, Voice + Chat, 100% Private, 100 Min Free. No Login, No Name.">
+<meta name="theme-color" content="#FF6B35">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕊️</text></svg>">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto}
-body{background:#FFF8F0;color:#222;padding:14px;padding-bottom:110px}
-.top{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:26px;font-weight:900;letter-spacing:-.5px}.logo span{color:#FF6B35}
-.badge{background:#FF6B35;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700}
-.timer{background:#222;color:#fff;padding:8px 11px;border-radius:20px;font-size:12px;margin-top:10px;display:inline-block;font-weight:600}
-h1{font-size:32px;line-height:1.15;margin:16px 0 8px}h1 span{color:#FF6B35}
-p{color:#666;line-height:1.5;font-size:14px}
-.search{width:100%;padding:13px;border:2px solid #eee;border-radius:14px;margin:14px 0;font-size:15px;background:#fff;outline:none}
-.pop{display:flex;gap:7px;flex-wrap:wrap;max-height:135px;overflow-y:auto;padding-bottom:4px}
-.pop button{padding:9px 13px;border-radius:20px;border:1px solid #FFD9C4;background:#fff;font-size:13px;cursor:pointer}
-.pop button.active{background:#FF6B35;color:#fff;border-color:#FF6B35}
-.sec{font-weight:800;margin:18px 0 8px;font-size:15px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+:root{--bg:#FFF8F0;--card:#fff;--text:#1a1a1a;--muted:#666;--border:#eee;--orange:#FF6B35;--orange-light:#FFF0E8}
+body.dark{--bg:#121212;--card:#1E1E1E;--text:#fff;--muted:#aaa;--border:#333;--orange-light:#2A1A12}
+body{background:var(--bg);color:var(--text);padding:0;padding-bottom:110px;transition:.3s}
+a{color:var(--orange);text-decoration:none}
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:60}
+.logo{font-size:24px;font-weight:900;letter-spacing:-.5px}.logo span{color:var(--orange)}
+.topbtn{border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
+.wrap{padding:14px;max-width:720px;margin:0 auto}
+.badge{background:var(--orange);color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block}
+.timer{background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px;margin-top:10px;display:inline-block;font-weight:600}
+body.dark .timer{background:#fff;color:#111}
+h1{font-size:34px;line-height:1.12;margin:16px 0 8px;letter-spacing:-.5px}h1 span{color:var(--orange)}
+p{color:var(--muted);line-height:1.55;font-size:14px}
+.search{width:100%;padding:13px;border:2px solid var(--border);border-radius:14px;margin:14px 0;font-size:15px;background:var(--card);color:var(--text);outline:none}
+.pop{display:flex;gap:7px;flex-wrap:wrap;max-height:140px;overflow-y:auto;padding-bottom:4px}
+.pop button{padding:9px 13px;border-radius:20px;border:1px solid #FFD9C4;background:var(--card);color:var(--text);font-size:13px;cursor:pointer}
+.pop button.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+.sec{font-weight:800;margin:20px 0 8px;font-size:16px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.card{background:#fff;border:2px solid #eee;border-radius:16px;padding:13px;cursor:pointer;text-align:left}
-.card.active{border-color:#FF6B35;background:#FFF0E8}
-.card b{font-size:14px}.card small{color:#888}
-.box{background:#fff;border:1px solid #eee;border-radius:18px;padding:13px;margin-top:12px}
-.chatbox{background:#fff;border:1px solid #eee;border-radius:20px;padding:12px;margin-top:12px;min-height:260px;max-height:380px;overflow-y:auto}
-.msg{padding:10px 13px;border-radius:14px;margin:7px 0;max-width:88%;font-size:14px;line-height:1.45;word-wrap:break-word}
-.me{background:#FF6B35;color:#fff;margin-left:auto}
-.ai{background:#F1F1F1;color:#222}
-.inputRow{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px;display:flex;gap:8px;border-top:1px solid #eee;z-index:50}
-.inputRow input{flex:1;padding:13px;border:2px solid #eee;border-radius:30px;font-size:15px;outline:none}
-.mic{width:48px;height:48px;border-radius:50%;background:#222;color:#fff;border:none;font-size:20px;flex-shrink:0}
-.send{padding:0 18px;border-radius:30px;background:#FF6B35;color:#fff;border:none;font-weight:800}
-.smallBtn{padding:9px 13px;border-radius:20px;border:1px solid #eee;background:#fff;font-size:12px;cursor:pointer}
-.center{text-align:center;color:#999;font-size:11px;margin-top:12px;line-height:1.6}
-#ageGate{position:fixed;inset:0;background:#FFF8F0;z-index:99;display:flex;flex-direction:column;justify-content:center;padding:24px;text-align:center}
+.card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:14px;cursor:pointer;text-align:left;color:var(--text)}
+.card.active{border-color:var(--orange);background:var(--orange-light)}
+.card b{font-size:14px}.card small{color:var(--muted)}
+.box{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px;margin-top:12px}
+.chatbox{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:12px;margin-top:12px;min-height:260px;max-height:400px;overflow-y:auto}
+.msg{padding:11px 13px;border-radius:14px;margin:7px 0;max-width:88%;font-size:14px;line-height:1.5;word-wrap:break-word}
+.me{background:var(--orange);color:#fff;margin-left:auto}
+.ai{background:#F1F1F1;color:#222}body.dark .ai{background:#2A2A2A;color:#fff}
+.inputRow{position:fixed;bottom:0;left:0;right:0;background:var(--card);padding:10px;display:flex;gap:8px;border-top:1px solid var(--border);z-index:50;max-width:720px;margin:0 auto}
+.inputRow input{flex:1;padding:13px;border:2px solid var(--border);border-radius:30px;font-size:15px;outline:none;background:var(--card);color:var(--text)}
+.mic{width:48px;height:48px;border-radius:50%;background:#111;color:#fff;border:none;font-size:20px;flex-shrink:0;cursor:pointer}body.dark .mic{background:#fff;color:#111}
+.send{padding:0 18px;border-radius:30px;background:var(--orange);color:#fff;border:none;font-weight:800;cursor:pointer}
+.smallBtn{padding:9px 13px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:12px;cursor:pointer}
+.center{text-align:center;color:var(--muted);font-size:11px;margin-top:12px;line-height:1.7}
+#ageGate{position:fixed;inset:0;background:var(--bg);z-index:99;display:flex;flex-direction:column;justify-content:center;padding:24px;text-align:center}
 #ageGate h2{font-size:32px;line-height:1.2}
 #ageGate button{padding:16px;border-radius:14px;border:none;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}
-.yes{background:#FF6B35;color:#fff}.no{background:#eee}
-.pill{display:inline-block;background:#FFF0E8;color:#FF6B35;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;margin:2px}
+.yes{background:var(--orange);color:#fff}.no{background:var(--border);color:var(--text)}
+.pill{display:inline-block;background:var(--orange-light);color:var(--orange);padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;margin:2px}
+.feat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:12px}
+.feat div{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center}
+.feat b{font-size:13px}.feat p{font-size:11px;margin-top:4px}
+.footer{background:var(--card);border-top:1px solid var(--border);margin-top:22px;padding:18px 14px;text-align:center}
+.footer b{font-size:14px}.footer p{font-size:12px;margin-top:8px}
+.footer button{background:none;border:none;color:var(--orange);font-weight:700;font-size:12px;cursor:pointer;margin:0 6px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;padding:16px;align-items:center;justify-content:center}
+.modal>div{background:var(--card);color:var(--text);border-radius:18px;padding:18px;max-width:520px;max-height:80vh;overflow-y:auto;width:100%}
+.modal h3{margin-bottom:8px}.modal p{font-size:13px;margin-bottom:8px}
+.closeBtn{width:100%;background:var(--orange);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800;margin-top:10px}
 </style>
 </head>
 <body>
 
 <div id="ageGate">
 <div style="font-size:54px">🕊️</div>
-<h2>Peace<span style="color:#FF6B35">Wala</span><br><span style="font-size:22px" id="gateSub">Dil Ki Baat, Bina Darr Ke</span></h2>
+<h2>Peace<span style="color:#FF6B35">Wala</span><br><span style="font-size:21px" id="gateSub">Dil Ki Baat, Bina Darr Ke</span></h2>
 <p style="margin:12px 0" id="gateDesc">Ye jagah sirf 18+ ke liye hai. Yaha jo bologe, wo yahi rahega. 24 ghante me auto-delete. Koi naam, koi login nahi.</p>
 <button class="yes" onclick="enterApp()" id="gateYes">✅ Main 18+ Hu - Andar Aao</button>
 <button class="no" onclick="alert('Sorry, ye jagah 18+ ke liye hai.')" id="gateNo">❌ Main 18 se chhota hu</button>
-<p class="center">🔒 100% Private • No Login • No Name • 🌍 130+ Bhasha</p>
+<p class="center">🔒 100% Private • No Login • No Name • 🌍 130+ Bhasha • ⏱️ Max 100 Min</p>
 </div>
 
-<div class="top"><div class="logo">Peace<span>Wala</span></div><div class="badge" id="t-badge">130+ Bhasha 🌍</div></div>
+<div class="topbar"><div class="logo">Peace<span>Wala</span></div><div style="display:flex;gap:6px"><button class="topbtn" onclick="toggleDark()">🌙 Dark</button><button class="topbtn" onclick="openModal('about')">ℹ️ About</button></div></div>
+
+<div class="wrap">
+<div class="badge" id="t-badge">🌍 130+ Bhasha • 100% Private • Global</div>
 <div class="timer" id="timer">⏱️ Free: 10:00 / Max: 100 Min • 🔒 Private</div>
-<div style="margin-top:8px"><span class="pill">🔒 Private</span><span class="pill">❤️ Free 10 Min</span><span class="pill">⏱️ Max 100 Min</span><span class="pill">🌍 Global</span></div>
+<div style="margin-top:8px"><span class="pill">🔒 Private</span><span class="pill">❤️ Free 10 Min</span><span class="pill">⏱️ Max 100 Min</span><span class="pill">🌍 Global</span><span class="pill">🎙️ Voice + Chat</span></div>
 
 <h1><span id="t-title1">Dil ki baat,</span><br><span id="t-title2" style="color:#FF6B35">bina darr ke.</span></h1>
-<p id="t-desc">AI dost jo teri mother tongue me sunega. Na judge karega, na kisi ko batayega. Type karo ya bolo - jaise man kare.</p>
+<p id="t-desc">AI dost jo teri mother tongue me sunega. Na judge karega, na kisi ko batayega. Type karo ya bolo - jaise man kare. Ye jagah sirf sunne ke liye hai.</p>
+
+<div class="feat"><div><b>🌍 130+</b><p id="f1">Mother Tongue</p></div><div><b>🎙️ Voice</b><p id="f2">Ladka / Ladki</p></div><div><b>🔒 Private</b><p id="f3">24h Auto-Delete</p></div></div>
 
 <input class="search" id="search" placeholder="Apni Bhasha Dhoondo..." onkeyup="filterLang()">
 <div class="pop" id="langList"></div>
@@ -87,14 +110,14 @@ p{color:#666;line-height:1.5;font-size:14px}
 </div>
 <div style="font-weight:700;font-size:13px;margin:12px 0 8px" id="t-styleLabel">Kaisi Awaaz?</div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
-<button class="smallBtn" id="styleNormal" onclick="setVoiceStyle('normal')" style="background:#222;color:#fff">🎤 Normal</button>
+<button class="smallBtn" id="styleNormal" onclick="setVoiceStyle('normal')" style="background:#111;color:#fff">🎤 Normal</button>
 <button class="smallBtn" id="styleDeep" onclick="setVoiceStyle('deep')">🗣️ Deep - Bhari</button>
 <button class="smallBtn" id="styleLow" onclick="setVoiceStyle('low')">🤫 Low - Dheemi</button>
 <button class="smallBtn" id="styleSlow" onclick="setVoiceStyle('slow')">🐢 Slow - Aaram Se</button>
 <button class="smallBtn" id="styleFast" onclick="setVoiceStyle('fast')">⚡ Fast - Tez</button>
 </div>
-<button class="smallBtn" id="voiceBtn" onclick="toggleVoice()" style="background:#222;color:#fff;padding:13px 16px;border-radius:20px;margin-top:12px;width:100%;font-weight:800;font-size:14px">🎙️ Voice Mode: OFF - Dabao Aur Bolo</button>
-<p style="font-size:12px;margin-top:8px" id="t-voiceHint">Voice Mode ON karte hi - Tu bolega, AI bolega, fir tu bolega. Bina type kiye.</p>
+<button class="smallBtn" id="voiceBtn" onclick="toggleVoice()" style="background:#111;color:#fff;padding:13px 16px;border-radius:20px;margin-top:12px;width:100%;font-weight:800;font-size:14px">🎙️ Voice Mode: OFF - Dabao Aur Bolo</button>
+<p style="font-size:12px;margin-top:8px" id="t-voiceHint">Voice Mode ON karte hi - Tu bolega, AI bolega, fir tu bolega. Bina type kiye, bina haath lagaye.</p>
 </div>
 
 <div class="sec" id="t-chatTitle">4. Chat - Yaha Bol, Halka Ho Ja</div>
@@ -104,25 +127,34 @@ p{color:#666;line-height:1.5;font-size:14px}
 <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
 <button class="smallBtn" onclick="clearChat()" id="t-clear">🗑️ Chat Delete Karo</button>
 <button class="smallBtn" onclick="speakLast()" id="t-replay">🔊 AI Ki Awaaz Fir Suno</button>
-<button class="smallBtn" onclick="alert('Crisis Help: India - 9152987821 (iCall) | 14416 (Tele-MANAS) | US - 988 | UK - 116123 | Agar khatra lag raha hai to turant apne nazdeeki insaan ko batao.')" id="t-help">🆘 Help Chahiye?</button>
+<button class="smallBtn" onclick="openModal('help')" id="t-help">🆘 Help Chahiye?</button>
 </div>
 
-<p class="center" id="t-footer">🔒 Private • ❤️ Free 10 Min • ⏱️ Max 100 Min • 🌍 130+ Bhasha • No Login</p>
+<p class="center" id="t-footer">🔒 Private • ❤️ Free 10 Min • ⏱️ Max 100 Min • 🌍 130+ Bhasha • No Login • 18+</p>
+
+<div class="footer">
+<b>Peace<span style="color:#FF6B35">Wala</span> — Dil Ki Baat, Bina Darr Ke</b>
+<p>AI Dost • 130+ Languages • Voice + Chat • 100% Private</p>
+<div style="margin-top:10px"><button onclick="openModal('about')">About</button><button onclick="openModal('privacy')">Privacy Policy</button><button onclick="openModal('terms')">Terms</button><button onclick="openModal('help')">Help / Crisis</button></div>
+<p style="margin-top:10px">© 2026 PeaceWala. Made with ❤️ for the world. No data is stored. No login. No tracking.</p>
+</div>
+</div>
 
 <div class="inputRow">
-<button class="mic" onclick="startVoice()" title="Mic">🎤</button>
+<button class="mic" onclick="startVoice()" title="Mic - Bolo">🎤</button>
 <input id="chatInput" placeholder="Yaha likho... main sun raha hu" onkeypress="if(event.key==='Enter')sendMsg()">
 <button class="send" onclick="sendMsg()" id="t-send">Bhej ➤</button>
 </div>
 
+<div class="modal" id="modal-about"><div><h3>ℹ️ About PeaceWala</h3><p>PeaceWala ek safe jagah hai jaha tu apne dil ki baat bina darr ke bol sakta hai. Koi judge nahi karega, koi naam nahi puchega.</p><p><b>Kya karta hai?</b> Sunta hai, samajhta hai, halka karta hai. Mood, Bhasha aur Scenario ke hisaab se baat karta hai.</p><p><b>Kya nahi karta?</b> Ye doctor / therapist nahi hai. Agar bahut bhari lag raha hai to kisi bharosemand insaan ya professional se baat kar.</p><button class="closeBtn" onclick="closeModal()">Band Karo</button></div></div>
+<div class="modal" id="modal-privacy"><div><h3>🔒 Privacy Policy - 100% Private</h3><p>1. <b>No Login, No Name, No Email.</b> Hum kuch nahi maangte.</p><p>2. <b>No Server Storage.</b> Chat sirf tere phone/browser me rehti hai.</p><p>3. <b>24 Hours Auto-Delete.</b> Chat 24 ghante me apne aap delete ho jati hai.</p><p>4. <b>Manual Delete.</b> Tu kabhi bhi Delete button se chat mita sakta hai.</p><p>5. <b>No Selling Data.</b> Teri baat kisi ko bechi / batayi nahi jati.</p><button class="closeBtn" onclick="closeModal()">Band Karo</button></div></div>
+<div class="modal" id="modal-terms"><div><h3>📜 Terms - Seedha Sauda</h3><p>1. Ye jagah sirf 18+ ke liye hai.</p><p>2. Yaha kisi ko gaali / dhamki / galat baat mat bol.</p><p>3. Ye AI dost hai, doctor nahi. Medical / legal faisla ispe mat le.</p><p>4. Free 10 Min, Max 100 Min per day. Dimag ko rest bhi chahiye.</p><p>5. Crisis lage to turant Help button dabaa ya apne nazdeeki ko bata.</p><button class="closeBtn" onclick="closeModal()">Band Karo</button></div></div>
+<div class="modal" id="modal-help"><div><h3>🆘 Help / Crisis - Tu Akela Nahi Hai</h3><p>Agar tujhe lag raha hai ki tu khud ko nuksaan pahunchayega, to abhi ruk ja aur kisi ko bata.</p><p><b>India:</b> 9152987821 (iCall) | 14416 (Tele-MANAS) | 112 Emergency</p><p><b>USA:</b> 988 | <b>UK & Ireland:</b> 116123 (Samaritans)</p><p><b>International:</b> findahelpline.org</p><p>Tu bahut keemti hai. Ek baat bolke to dekh, halka lagega.</p><button class="closeBtn" onclick="closeModal()">Band Karo</button></div></div>
+
 <script>
 const langs=["Hinglish","Hindi","English","Gujarati","Marathi","Bengali","Tamil","Telugu","Malayalam","Kannada","Punjabi","Odia","Assamese","Urdu","Bhojpuri","Maithili","Rajasthani","Haryanvi","Kashmiri","Nepali","Spanish","French","German","Italian","Portuguese","Russian","Arabic","Japanese","Korean","Chinese","Thai","Vietnamese","Indonesian","Malay","Filipino","Turkish","Dutch","Polish","Ukrainian","Swedish","Greek","Hebrew","Persian","Swahili","Amharic","Hausa","Zulu","Somali","Sinhala","Khmer","Lao","Burmese","Mongolian","Finnish","Danish","Norwegian","Czech","Hungarian","Romanian","Bulgarian","Croatian","Serbian","Slovak","Slovenian","Estonian","Latvian","Lithuanian","Icelandic","Irish","Welsh","Basque","Catalan","Galician","Albanian","Macedonian","Belarusian","Georgian","Armenian","Azerbaijani","Kazakh","Uzbek","Tajik","Kyrgyz","Turkmen","Pashto","Sindhi","Kurdish","Latin","Esperanto","Hawaiian","Maori","Samoan","Tongan","Fijian","Quechua","Guarani","Aymara","Yoruba","Igbo","Shona","Sesotho","Xhosa","Afrikaans","Malagasy","Konkani","Manipuri"];
 const T={
-"Hinglish":{badge:"130+ Bhasha 🌍",title1:"Dil ki baat,",title2:"bina darr ke.",desc:"AI dost jo teri mother tongue me sunega. Na judge karega, na kisi ko batayega. Type karo ya bolo - jaise man kare.",search:"Apni Bhasha Dhoondo...",moodTitle:"1. Tera Mood Kya Hai?",m1:"😔 Sad Hu",m1s:"Breakup, Padhai, Ghar",m2:"😡 Gussa Hai",m2s:"Kisi se ladai",m3:"😰 Dar Lag Raha",m3s:"Exam, Job, Future",m4:"❤️ Pyar Wala",m4s:"Crush, Dil ki baat",scTitle:"2. Kisse Baat Karni Hai?",s1:"Best Friend jaisa",s2:"Job / Interview Practice",s3:"Pyar wali baat",s4:"Ghar wali baat",voiceTitle:"3. 🎙️ Awaaz Kaise Chahiye?",genderLabel:"Kiski Awaaz?",styleLabel:"Kaisi Awaaz?",voiceHint:"Voice Mode ON karte hi - Tu bolega, AI bolega, fir tu bolega. Bina type kiye.",chatTitle:"4. Chat - Yaha Bol, Halka Ho Ja",clear:"🗑️ Chat Delete Karo",replay:"🔊 AI Ki Awaaz Fir Suno",help:"🆘 Help Chahiye?",footer:"🔒 Private • ❤️ Free 10 Min • ⏱️ Max 100 Min • 🌍 130+ Bhasha • No Login",input:"Yaha likho... main sun raha hu",send:"Bhej ➤",first:"👋 Hi, main PeaceWala hu. Bata aaj dil me kya hai? Jo bolega, wo yahi rahega, 24 ghante me delete ho jayega.",gateSub:"Dil Ki Baat, Bina Darr Ke",gateDesc:"Ye jagah sirf 18+ ke liye hai. Yaha jo bologe, wo yahi rahega. 24 ghante me auto-delete. Koi naam, koi login nahi.",gateYes:"✅ Main 18+ Hu - Andar Aao",gateNo:"❌ Main 18 se chhota hu"},
-"Hindi":{badge:"130+ भाषाएं 🌍",title1:"दिल की बात,",title2:"बिना डर के.",desc:"AI दोस्त जो तेरी मातृभाषा में सुनेगा। ना जज करेगा, ना किसी को बताएगा। टाइप करो या बोलो।",search:"अपनी भाषा ढूंढो...",moodTitle:"1. तेरा मूड क्या है?",m1:"😔 उदास हूँ",m1s:"ब्रेकअप, पढ़ाई, घर",m2:"😡 गुस्सा है",m2s:"किसी से लड़ाई",m3:"😰 डर लग रहा है",m3s:"परीक्षा, नौकरी, भविष्य",m4:"❤️ प्यार वाला",m4s:"क्रश, दिल की बात",scTitle:"2. किससे बात करनी है?",s1:"बेस्ट फ्रेंड जैसा",s2:"नौकरी / इंटरव्यू प्रैक्टिस",s3:"प्यार वाली बात",s4:"घर वाली बात",voiceTitle:"3. 🎙️ आवाज़ कैसी चाहिए?",genderLabel:"किसकी आवाज़?",styleLabel:"कैसी आवाज़?",voiceHint:"वॉयस मोड ON करते ही - तुम बोलोगे, AI बोलेगा, फिर तुम बोलोगे। बिना टाइप किए।",chatTitle:"4. चैट - यहाँ बोल, हल्का हो जा",clear:"🗑️ चैट डिलीट करो",replay:"🔊 AI की आवाज़ फिर सुनो",help:"🆘 मदद चाहिए?",footer:"🔒 निजी • ❤️ फ्री 10 मिनट • ⏱️ मैक्स 100 मिनट • 🌍 130+ भाषा • नो लॉगिन",input:"यहाँ लिखो... मैं सुन रहा हूँ",send:"भेजो ➤",first:"👋 नमस्ते, मैं PeaceWala हूँ। बता आज दिल में क्या है? जो बोलेगा, वो यहीं रहेगा, 24 घंटे में डिलीट हो जाएगा।",gateSub:"दिल की बात, बिना डर के",gateDesc:"ये जगह सिर्फ 18+ के लिए है। यहाँ जो बोलोगे, वो यहीं रहेगा। 24 घंटे में ऑटो-डिलीट। कोई नाम, कोई लॉगिन नहीं।",gateYes:"✅ मैं 18+ हूँ - अंदर आओ",gateNo:"❌ मैं 18 से छोटा हूँ"},
-"Gujarati":{badge:"130+ ભાષા 🌍",title1:"દિલની વાત,",title2:"ડર વગર.",desc:"AI દોસ્ત જે તારી માતૃભાષામાં સાંભળશે. ના જજ કરશે, ના કોઈને કહેશે. ટાઈપ કરો કે બોલો.",search:"તમારી ભાષા શોધો...",moodTitle:"1. તારો મૂડ શું છે?",m1:"😔 ઉદાસ છું",m1s:"બ્રેકઅપ, ભણતર, ઘર",m2:"😡 ગુસ્સો છે",m2s:"કોઈ સાથે ઝઘડો",m3:"😰 ડર લાગે છે",m3s:"પરીક્ષા, નોકરી, ભવિષ્ય",m4:"❤️ પ્રેમ વાળું",m4s:"ક્રશ, દિલની વાત",scTitle:"2. કોની સાથે વાત કરવી છે?",s1:"બેસ્ટ ફ્રેન્ડ જેવો",s2:"નોકરી / ઇન્ટરવ્યૂ પ્રેક્ટિસ",s3:"પ્રેમ વાળી વાત",s4:"ઘર વાળી વાત",voiceTitle:"3. 🎙️ અવાજ કેવો જોઈએ?",genderLabel:"કોનો અવાજ?",styleLabel:"કેવો અવાજ?",voiceHint:"વોઈસ મોડ ON કરતા જ - તું બોલીશ, AI બોલશે, પછી તું બોલીશ. ટાઈપ કર્યા વગર.",chatTitle:"4. ચેટ - અહીં બોલ, હળવો થઈ જા",clear:"🗑️ ચેટ ડિલીટ કરો",replay:"🔊 AI નો અવાજ ફરી સાંભળો",help:"🆘 મદદ જોઈએ?",footer:"🔒 ખાનગી • ❤️ ફ્રી 10 મિનિટ • ⏱️ મેક્સ 100 મિનિટ • 🌍 130+ ભાષા • નો લોગિન",input:"અહીં લખો... હું સાંભળું છું",send:"મોકલો ➤",first:"👋 હાય, હું PeaceWala છું. કહે આજે દિલમાં શું છે? જે બોલીશ એ અહીં જ રહેશે, 24 કલાકમાં ડિલીટ થઈ જશે.",gateSub:"દિલની વાત, ડર વગર",gateDesc:"આ જગ્યા ફક્ત 18+ માટે છે. અહીં જે બોલીશ એ અહીં જ રહેશે. 24 કલાકમાં ઓટો-ડિલીટ. કોઈ નામ, કોઈ લોગિન નહીં.",gateYes:"✅ હું 18+ છું - અંદર આવો",gateNo:"❌ હું 18 થી નાનો છું"},
-"English":{badge:"130+ Languages 🌍",title1:"Speak your heart,",title2:"without fear.",desc:"AI friend who listens in your mother tongue. No judging, no telling anyone. Type or speak - as you like.",search:"Find your language...",moodTitle:"1. What's Your Mood?",m1:"😔 Feeling Sad",m1s:"Breakup, Studies, Home",m2:"😡 Feeling Angry",m2s:"Fight with someone",m3:"😰 Feeling Scared",m3s:"Exam, Job, Future",m4:"❤️ In Love",m4s:"Crush, Heart talk",scTitle:"2. Who Do You Want To Talk To?",s1:"Like Best Friend",s2:"Job / Interview Practice",s3:"Love talk",s4:"Family talk",voiceTitle:"3. 🎙️ How Should Voice Sound?",genderLabel:"Whose Voice?",styleLabel:"Which Style?",voiceHint:"Turn Voice Mode ON - You speak, AI speaks, you speak again. No typing.",chatTitle:"4. Chat - Speak, Feel Light",clear:"🗑️ Delete Chat",replay:"🔊 Hear AI Voice Again",help:"🆘 Need Help?",footer:"🔒 Private • ❤️ Free 10 Min • ⏱️ Max 100 Min • 🌍 130+ Languages • No Login",input:"Write here... I'm listening",send:"Send ➤",first:"👋 Hi, I'm PeaceWala. Tell me what's in your heart today? What you say stays here, auto-deletes in 24 hours.",gateSub:"Speak Your Heart, Without Fear",gateDesc:"This place is only for 18+. What you say stays here. Auto-deletes in 24 hours. No name, no login.",gateYes:"✅ I'm 18+ - Enter",gateNo:"❌ I'm under 18"},
-"Marathi":{badge:"130+ भाषा 🌍",title1:"मनातलं बोल,",title2:"घाबरू नकोस.",desc:"AI मित्र जो तुझ्या मातृभाषेत ऐकेल. ना जज करेल, ना कोणाला सांगेल. टाईप कर किंवा बोल.",search:"तुझी भाषा शोध...",moodTitle:"1. तुझा मूड काय आहे?",m1:"😔 उदास आहे",m1s:"ब्रेकअप, अभ्यास, घर",m2:"😡 राग आला आहे",m2s:"कोणाशी भांडण",m3:"😰 भीती वाटते",m3s:"परीक्षा, नोकरी, भविष्य",m4:"❤️ प्रेमाचं",m4s:"क्रश, मनातलं",scTitle:"2. कोणाशी बोलायचं आहे?",s1:"बेस्ट फ्रेंड सारखा",s2:"नोकरी / इंटरव्ह्यू प्रॅक्टिस",s3:"प्रेमाची गोष्ट",s4:"घरची गोष्ट",voiceTitle:"3. 🎙️ आवाज कसा हवा?",genderLabel:"कोणाचा आवाज?",styleLabel:"कसा आवाज?",voiceHint:"व्हॉईस मोड ON करताच - तू बोलशील, AI बोलेल, मग तू बोलशील. टाईप न करता.",chatTitle:"3. चॅट - इथे बोल, हलकं हो",clear:"🗑️ चॅट डिलीट कर",replay:"🔊 AI चा आवाज पुन्हा ऐक",help:"🆘 मदत हवी?",footer:"🔒 खाजगी • ❤️ फ्री 10 मिनिटे • ⏱️ मॅक्स 100 मिनिटे • 🌍 130+ भाषा • नो लॉगिन",input:"इथे लिही... मी ऐकतोय",send:"पाठव ➤",first:"👋 हाय, मी PeaceWala आहे. सांग आज मनात काय आहे? जे बोलशील ते इथेच राहील, 24 तासात डिलीट होईल.",gateSub:"मनातलं बोल, घाबरू नकोस",gateDesc:"ही जागा फक्त 18+ साठी आहे. इथे जे बोलशील ते इथेच राहील. 24 तासात ऑटो-डिलीट. कोणतंही नाव, कोणतंही लॉगिन नाही.",gateYes:"✅ मी 18+ आहे - आत ये",gateNo:"❌ मी 18 पेक्षा लहान आहे"},
-"Bengali":{badge:"130+ ভাষা 🌍",title1:"মনের কথা,",title2:"ভয় ছাড়া.",desc:"AI বন্ধু যে তোমার মাতৃভাষায় শুনবে। বিচার করবে না, কাউকে বলবে না। টাইপ করো বা বলো।",search:"তোমার ভাষা খোঁজো...",moodTitle:"1. তোমার মুড কী?",m1:"😔 মন খারাপ",m1s:"ব্রেকআপ, পড়াশোনা, বাড়ি",m2:"😡 রাগ হয়েছে",m2s:"কারো সাথে ঝগড়া",m3:"😰 ভয় লাগছে",m3s:"পরীক্ষা, চাকরি, ভবিষ্যৎ",m4:"❤️ ভালোবাসার",m4s:"ক্রাশ, মনের কথা",scTitle:"2. কার সাথে কথা বলবে?",s1:"বেস্ট ফ্রেন্ডের মতো",s2:"চাকরি / ইন্টারভিউ প্র্যাকটিস",s3:"ভালোবাসার কথা",s4:"বাড়ির কথা",voiceTitle:"3. 🎙️ কণ্ঠ কেমন হবে?",genderLabel:"কার কণ্ঠ?",styleLabel:"কেমন স্টাইল?",voiceHint:"ভয়েস মোড ON করলেই - তুমি বলবে, AI বলবে, আবার তুমি বলবে। টাইপ ছাড়াই।",chatTitle:"4. চ্যাট - এখানে বলো, হালকা হও",clear:"🗑️ চ্যাট ডিলিট করো",replay:"🔊 AI এর কণ্ঠ আবার শোনো",help:"🆘 সাহায্য লাগবে?",footer:"🔒 গোপন • ❤️ ফ্রি 10 মিনিট • ⏱️ সর্বোচ্চ 100 মিনিট • 🌍 130+ ভাষা • নো লগইন",input:"এখানে লেখো... আমি শুনছি",send:"পাঠাও ➤",first:"👋 হাই, আমি PeaceWala। বলো আজ মনে কী আছে? যা বলবে তা এখানেই থাকবে, 24 ঘণ্টায় ডিলিট হয়ে যাবে।",gateSub:"মনের কথা, ভয় ছাড়া",gateDesc:"এই জায়গা শুধু 18+ দের জন্য। এখানে যা বলবে তা এখানেই থাকবে। 24 ঘণ্টায় অটো-ডিলিট। কোনো নাম, কোনো লগইন নয়।",gateYes:"✅ আমি 18+ - ভিতরে এসো",gateNo:"❌ আমি 18 এর ছোট"},
-"Tamil":{badge:"130+ மொழி 🌍",title1:"மனதில் உள்ளதை,",title2:"பயமின்றி சொல்.",desc:"உன் தாய்மொழியில் கேட்கும் AI நண்பன். தீர்ப்பு சொல்ல மாட்டான், யாரிடமும் சொல்ல மாட்டான். டைப் செய் அல்லது பேசு.",search:"உன் மொழியை தேடு...",moodTitle:"1. உன் மூட் என்ன?",m1:"😔 சோகமாக இருக்கு",m1s:"பிரேக்கப், படிப்பு, வீடு",m2:"😡 கோபமாக இருக்கு",m2s:"யாருடனோ சண்டை",m3:"😰 பயமாக இருக்கு",m3s:"தேர்வு, வேலை, எதிர்காலம்",m4:"❤️ காதல்",m4s:"கிரஷ், மனதில் உள்ளது",scTitle:"2. யாரிடம் பேசணும்?",s1:"பெஸ்ட் பிரண்ட் போல",s2:"வேலை / நேர்காணல் பயிற்சி",s3:"காதல் பேச்சு",s4:"வீட்டு பேச்சு",voiceTitle:"3. 🎙️ குரல் எப்படி இருக்கணும்?",genderLabel:"யார் குரல்?",styleLabel:"எந்த ஸ்டைல்?",voiceHint:"வாய்ஸ் மோட் ON செய்தால் - நீ பேசுவாய், AI பேசும், மீண்டும் நீ பேசுவாய். டைப் இல்லாமல்.",chatTitle:"4. சாட் - இங்கே சொல்லு, லேசாகு",clear:"🗑️ சாட் நீக்கு",replay:"🔊 AI குரலை மீண்டும் கேள்",help:"🆘 உதவி வேணுமா?",footer:"🔒 தனியுரிமை • ❤️ இலவசம் 10 நிமிடம் • ⏱️ அதிகபட்சம் 100 நிமிடம் • 🌍 130+ மொழி • நோ லாகின்",input:"இங்கே எழுது... நான் கேட்கிறேன்",send:"அனுப்பு ➤",first:"👋 வணக்கம், நான் PeaceWala. இன்று மனதில் என்ன இருக்கு சொல்லு? நீ சொல்வது இங்கேயே இருக்கும், 24 மணியில் நீக்கப்படும்.",gateSub:"மனதில் உள்ளதை பயமின்றி சொல்",gateDesc:"இந்த இடம் 18+ மட்டும். நீ சொல்வது இங்கேயே இருக்கும். 24 மணியில் ஆட்டோ-நீக்கம். பெயர் இல்லை, லாகின் இல்லை.",gateYes:"✅ நான் 18+ - உள்ளே வா",gateNo:"❌ நான் 18 வயதுக்கு கீழ்"},
-"Telugu":{badge:"130+ భాషలు 🌍",title1:"మనసులో మాట,",title2:"భయం లేకుండా.",desc:"నీ మాతృభాషలో వినే AI స్నేహితుడు. జడ్జ్ చేయడు, ఎవరికీ చెప్పడు. టైప్ చేయి లేదా మాట్లాడు.",search:"నీ భాష వెతుకు...",moodTitle:"1. నీ మూడ్ ఏంటి?",m1:"😔 బాధగా ఉంది",m1s:"బ్రేకప్, చదువు, ఇల్లు",m2:"😡 కోపంగా ఉంది",m2s:"ఎవరితోనో గొడవ",m3:"😰 భయంగా ఉంది",m3s:"పరీక్ష, ఉద్యోగం, భవిష్యత్తు",m4:"❤️ ప్రేమ",m4s:"క్రష్, మనసులో మాట",scTitle:"2. ఎవరితో మాట్లాడాలి?",s1:"బెస్ట్ ఫ్రెండ్ లాగా",s2:"ఉద్యోగం / ఇంటర్వ్యూ ప్రాక్టీస్",s3:"ప్రేమ మాట",s4:"ఇంటి మాట",voiceTitle:"3. 🎙️ వాయిస్ ఎలా ఉండాలి?",genderLabel:"ఎవరి వాయిస్?",styleLabel:"ఏ స్టైల్?",voiceHint:"వాయిస్ మోడ్ ON చేస్తే - నువ్వు మాట్లాడతావు, AI మాట్లాడుతుంది, మళ్ళీ నువ్వు. టైప్ లేకుండా.",chatTitle:"4. చాట్ - ఇక్కడ చెప్పు, తేలిక అవ్వు",clear:"🗑️ చాట్ డిలీట్ చేయి",replay:"🔊 AI వాయిస్ మళ్ళీ విను",help:"🆘 సహాయం కావాలా?",footer:"🔒 ప్రైవేట్ • ❤️ ఉచితం 10 నిమిషాలు • ⏱️ గరిష్టం 100 నిమిషాలు • 🌍 130+ భాషలు • నో లాగిన్",input:"ఇక్కడ రాయి... నేను వింటున్నాను",send:"పంపు ➤",first:"👋 హాయ్, నేను PeaceWala. ఈరోజు మనసులో ఏముంది చె
+"Hinglish":{badge:"🌍 130+ Bhasha • 100% Private • Global",title1:"Dil ki baat,",title2:"bina darr ke.",desc:"AI dost jo teri mother tongue me sunega. Na judge karega, na kisi ko batayega. Type karo ya bolo - jaise man kare. Ye jagah sirf sunne ke liye hai.",search:"Apni Bhasha Dhoondo...",moodTitle:"1. Tera Mood Kya Hai?",m1:"😔 Sad Hu",m1s:"Breakup, Padhai, Ghar",m2:"😡 Gussa Hai",m2s:"Kisi se ladai",m3:"😰 Dar Lag Raha",m3s:"Exam, Job, Future",m4:"❤️ Pyar Wala",m4s:"Crush, Dil ki baat",scTitle:"2. Kisse Baat Karni Hai?",s1:"Best Friend jaisa",s2:"Job / Interview Practice",s3:"Pyar wali baat",s4:"Ghar wali baat",voiceTitle:"3. 🎙️ Awaaz Kaise Chahiye?",genderLabel:"Kiski Awaaz?",styleLabel:"Kaisi Awaaz?",voiceHint:"Voice Mode ON karte hi - Tu bolega, AI bolega, fir tu bolega. Bina type kiye, bina haath lagaye.",chatTitle:"4. Chat - Yaha Bol, Halka Ho Ja",clear:"🗑️ Chat Delete Karo",replay:"🔊 AI Ki Awaaz Fir Suno",help:"🆘 Help Chahiye?",footer:"🔒 Private • ❤️ Free 10 Min • ⏱️ Max 100 Min • 🌍 130+ Bhasha • No Login • 18+",input:"Yaha likho... main sun raha hu",send:"Bhej ➤",first:"👋 Hi, main PeaceWala hu. Bata aaj dil me kya hai? Jo bolega, wo yahi rahega, 24 ghante me delete ho jayega.",gateSub:"Dil Ki Baat, Bina Darr Ke",gateDesc:"Ye jagah sirf 18+ ke liye hai. Yaha jo bologe, wo yahi rahega. 24 ghante me auto-delete. Koi naam, koi login nahi.",gateYes:"✅ Main 18+ Hu - Andar Aao",gateNo:"❌ Main 18 se chhota hu",f1:"Mother Tongue",f2:"Ladka / Ladki",f3:"24h Auto-Delete"},
+"Hindi":{badge:"🌍 130+ भाषाएं • 100% निजी • ग्लोबल",title1:"दिल की बात,",title2:"बिना डर के.",desc:"AI दोस्त जो तेरी मातृभाषा में सुनेगा। ना जज करेगा, ना किसी को बताएगा। टाइप करो या बोलो।",search:"अपनी भाषा ढूंढो...",moodTitle:"1. तेरा मूड क्या है?",m1:"😔 उदास हूँ",m1s:"ब्रेकअप, पढ़ाई, घर",m2:"😡 गुस्सा है",m2s:"किसी से लड़ाई",m3:"😰 डर लग रहा है",m3s:"परीक्षा, नौकरी, भविष्य",m4:"❤️ प्यार वाला",m4s:"क्रश, दिल की बात",scTitle:"2. किससे बात करनी है?",s1:"बेस्ट फ्रेंड जैसा",s2:"नौकरी / इंटरव्यू प्रैक्टिस",s3:"प्यार वाली बात",s4:"घर वाली बात",voiceTitle:"3. 🎙️ आवाज़ कैसी चाहिए?",genderLabel:"किसकी आवाज़?",styleLabel:"कैसी आवाज़?",voiceHint:"वॉयस मोड ON करते ही - तुम बोलोगे, AI बोलेगा, फिर तुम बोलोगे। बिना टाइप किए।",chatTitle:"4. चैट - यहाँ बोल, हल्का हो जा",clear:"🗑️ चैट डिलीट करो",replay:"🔊 AI की आवाज़ फिर सुनो",help:"🆘 मदद चाहिए?",footer:"🔒 निजी • ❤️ फ्री 10 मिनट • ⏱️ मैक्स 100 मिनट • 🌍 130+ भाषा • नो लॉगिन • 18+",input:"यहाँ लिखो... मैं सुन रहा हूँ",send:"भेजो ➤",first:"👋 नमस्ते, मैं PeaceWala हूँ। बता आज दिल में क्या है? जो बोलेगा, वो यहीं रहेगा, 24 घंटे में डिलीट हो जाएगा।",gateSub:"दिल की बात, बिना डर के",gateDesc:"ये जगह सिर्फ 18+ के लिए है। यहाँ जो बोलोगे, वो यहीं रहेगा। 24 घंटे में ऑटो-डिलीट। कोई नाम, कोई लॉगिन नहीं।",gateYes:"✅ मैं 18+ हूँ - अंदर आओ",gateNo:"❌ मैं 18 से छोटा हूँ",f1:"मातृभाषा",f2:"लड़का / लड़की",f3:"24 घंटे ऑटो-डिलीट"},
+"Gujarati":{badge:"🌍 130+ ભાષા • 100% ખાનગી • ગ્લોબલ",title1:"દિલની વાત,",title2:"ડર વગર.",desc:"AI દોસ્ત જે તારી માતૃભાષામાં સાંભળશે. ના જજ કરશે, ના કોઈને કહેશે. ટાઈપ કરો કે બોલો.",search:"તમારી ભાષા શોધો...",moodTitle:"1. તારો મૂડ શું છે?",m1:"😔 ઉદાસ છું",m1s:"બ્રેકઅપ, ભણતર, ઘર",m2:"😡 ગુસ્સો છે",m2s:"કોઈ સાથે ઝઘડો",m3:"😰 ડર લાગે છે",m3s:"પરીક્ષા, નોકરી, ભવિષ્ય",m4:"❤️ પ્રેમ વાળું",m4s:"ક્રશ, દિલની વાત",scTitle:"2. કોની સાથે વાત કરવી છે?",s1:"બેસ્ટ ફ્રેન્ડ જેવો",s2:"નોકરી / ઇન્ટરવ્યૂ પ્રેક્ટિસ",s3:"પ્રેમ વાળી વાત",s4:"ઘર વાળી વાત",voiceTitle:"3. 🎙️ અવાજ કેવો જોઈએ?",genderLabel:"કોનો અવાજ?",styleLabel:"કેવો અવાજ?",voiceHint:"વોઈસ મોડ ON કરતા જ - તું બોલીશ, AI બોલશે, પછી તું બોલીશ. ટાઈપ કર્યા વગર.",chatTitle:"4. ચેટ - અહીં બોલ, હળવો થઈ જા",clear:"🗑️ ચેટ ડિલીટ કરો",replay:"🔊 AI નો અવાજ ફરી સાંભળો",help:"🆘 મદદ જોઈએ?",footer:"🔒 ખાનગી • ❤️ ફ્રી 10 મિનિટ • ⏱️ મેક્સ 100 મિનિટ • 🌍 130+ ભાષા • નો લોગિન • 18+",input:"અહીં લખો... હું સાંભળું છું",send:"મોકલો ➤",first:"👋 હાય, હું PeaceWala છું. કહે આજે દિલમાં શું છે? જે બોલીશ એ અહીં જ રહેશે, 24 કલાકમાં ડિલીટ થઈ જશે.",gateSub:"દિલની વાત, ડર વગર",gateDesc:"આ જગ્યા ફક્ત 18+ માટે છે. અહીં જે બોલીશ એ અહીં જ રહેશે. 24 કલાકમાં ઓટો-ડિલીટ. કોઈ નામ, કોઈ લોગિન નહીં.",gateYes:"✅ હું 18+ છું - અંદર આવો",gateNo:"❌ હું 18 થી નાનો છું",f1:"માતૃભાષા",f2:"છોકરો / છોકરી",f3:"24 કલાક ઓટો-ડિલીટ"},
+"English":{badge:"🌍 130+ Languages • 100% Private • Global",title1:"Speak your heart,",title2:"without fear.",desc:"AI friend who listens in your mother tongue. No judging, no telling anyone. Type or speak - as you like.",search:"Find your language...",moodTitle:"1. What's Your Mood?",m1:"😔 Feeling Sad",m1s:"Breakup, Studies, Home",m2:"😡 Feeling Angry",m2s:"Fight with someone",m3:"😰 Fe
